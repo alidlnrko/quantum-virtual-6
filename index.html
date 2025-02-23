@@ -74,13 +74,9 @@
 <body>
     <header>
         <h1>Квантовая запутанность</h1>
-        <p>Квантовая запутанность — это когда две или больше частиц связаны так, что изменение одной моментально влияет на другую, независимо от расстояния между ними.</p>
-        <p>Например, у нас есть два электрона, запутанных между собой. Их спины (аналог квантового состояния) могут быть ↑ (вверх) или ↓ (вниз).
+        <p>Квантовая запутанность — это когда две или больше частиц связаны так, что изменение одной моментально влияет на другую, независимо от расстояния между ними.
 
-    ✅ Пока мы их не измерили, оба электрона находятся в суперпозиции (оба и ↑, и ↓ одновременно).
-    ✅ Но как только мы измеряем один электрон и видим, что у него спин ↑, другой тут же принимает состояние ↓, независимо от расстояния!
-
-    </p>
+Например, у нас есть два электрона, запутанных между собой. Их спины (аналог квантового состояния) могут быть ↑ (вверх) или ↓ (вниз). ✅ Пока мы их не измерили, оба электрона находятся в суперпозиции (оба и ↑, и ↓ одновременно). ✅ Но как только мы измеряем один электрон и видим, что у него спин ↑, другой тут же принимает состояние ↓, независимо от расстояния!</p>
     </header>
     <main>
         <div class="container">
@@ -97,35 +93,31 @@
         const resetButton = document.getElementById('resetButton');
 
         const states = [
-            { color: '#4caf50', state: '↑' },
-            { color: '#f44336', state: '↓' },
-            { color: '#2196f3', state: '←' },
-            { color: '#ffeb3b', state: '→' }
+            { color: '#4caf50', state1: '↑', state2: '↓' },
+            { color: '#f44336', state1: '↓', state2: '↑' },
+            { color: '#2196f3', state1: '←', state2: '→' },
+            { color: '#ffeb3b', state1: '→', state2: '←' }
         ];
 
         measureButton.addEventListener('click', () => {
-            // Выбираем случайное состояние
             const randomState = states[Math.floor(Math.random() * states.length)];
+            
             particle1.style.backgroundColor = randomState.color;
-            particle1.textContent = randomState.state;
+            particle1.textContent = randomState.state1;
 
-            // Связанное состояние второй частицы
             particle2.style.backgroundColor = randomState.color;
-            particle2.textContent = randomState.state;
+            particle2.textContent = randomState.state2;
 
-            // Скрываем кнопку измерения и показываем сброс
             measureButton.classList.add('hidden');
             resetButton.classList.remove('hidden');
         });
 
         resetButton.addEventListener('click', () => {
-            // Сбрасываем частицы
             particle1.style.backgroundColor = '#ff9800';
             particle1.textContent = '?';
             particle2.style.backgroundColor = '#ff9800';
             particle2.textContent = '?';
 
-            // Скрываем сброс и показываем измерение
             resetButton.classList.add('hidden');
             measureButton.classList.remove('hidden');
         });
